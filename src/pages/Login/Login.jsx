@@ -1,40 +1,61 @@
-import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // validation
+  const [validation, setValidation] = useState([]);
+
+  const navigate = useNavigate();
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("email", email);
+    formData.append("password", password);
+
+    await axios
+      .post(`${process.env.REACT_APP_BASEURL}api/v1/login`, formData, {
+        headers: {
+          apiKey: process.env.REACT_APP_APIKEY,
+        },
+      })
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setValidation(error.response.data);
+      });
+  };
+
   return (
-    <div>
-      <div className="container">
-        <div className="d-flex align-items-center" style={{ height: "100vh" }}>
-          <div style={{ width: "100%" }}>
-            <div className="row justify-content-center">
-              <div className="col-md-6">
-                <div className="card">
-                  <div className="card-header">Welcome</div>
-                  <form>
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputEmail1" className="form-label">
-                        Email address
-                      </label>
-                      <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                      <div id="emailHelp" className="form-text"></div>
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputPassword1" className="form-label">
-                        Password
-                      </label>
-                      <input type="password" className="form-control" id="exampleInputPassword1" />
-                    </div>
-                    <button type="submit" className="btn btn-primary">
-                      Submit
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+    <>
+      <div className="login">
+        <div className="col-1">
+          <h2>Sign In</h2>
+          <span>register and enjoy the service</span>
+
+          <form id="form" className="flex flex-col" onSubmit={loginHandler}>
+            <input type="email" placeholder="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            {validation.email && <small className="text-danger">{validation.email[0]}</small>}
+
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input type="password" id="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            {validation.password && <small className="text-danger">{validation.password[0]}</small>}
+            <button className="btn">Sign In</button>
+          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

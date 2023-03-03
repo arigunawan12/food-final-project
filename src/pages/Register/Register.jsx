@@ -29,9 +29,9 @@ const Register = () => {
     formData.append("profilePictureUrl", profilePictureUrl);
 
     await axios
-      .post("https://api-bootcamp.do.dibimbing.id/api/v1/register", formData, {
+      .post(`${process.env.REACT_APP_BASEURL}api/v1/register`, formData, {
         headers: {
-          apiKey: "w05KkI9AWhKxzvPFtXotUva-",
+          apiKey: process.env.REACT_APP_APIKEY,
         },
       })
       .then(() => {
@@ -59,7 +59,7 @@ const Register = () => {
             <label htmlFor="password" className="form-label">
               Password
             </label>
-            <input type="password" className="form-control" id="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             {validation.password && <small className="text-danger">{validation.password[0]}</small>}
 
             <input type="password" placeholder="confirm password" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)} />
