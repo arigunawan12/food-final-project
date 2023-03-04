@@ -1,7 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useFormik } from "formik";
 
 const Welcome = () => {
+  const formik = useFormik({});
+  console.log(formik);
   return (
     <div className="container">
       <div className="d-flex align-items-center" style={{ height: "100vh" }}>

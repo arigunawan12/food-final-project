@@ -1,58 +1,75 @@
-import axios from "axios";
-import { useState } from "react";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import "./login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // validation
-  const [validation, setValidation] = useState([]);
-
   const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Invalid email address").required("Required"),
+      password: Yup.string().min(8, "Minimum 8 characters").required("Required"),
+    }),
 
-  const loginHandler = async (e) => {
-    e.preventDefault();
+    onSubmit: (values) => {
+      axios
+        .post(`${process.env.REACT_APP_BASEURL}api/v1/login`, values, {
+          headers: {
+            apiKey: `${process.env.REACT_APP_APIKEY}`,
+          },
+          data: {
+            email: values.email,
+            password: values.password,
+          },
+        })
+        .then((res) => {
+          const token = res.data.token;
+          console.log(token);
+          localStorage.setItem("token", token);
 
-    const formData = new FormData();
+          const role = res.data.user.role;
+          localStorage.setItem("role", role);
 
-    formData.append("email", email);
-    formData.append("password", password);
+          const name = res.data.user.name;
+          localStorage.setItem("name", name);
 
-    await axios
-      .post(`${process.env.REACT_APP_BASEURL}api/v1/login`, formData, {
-        headers: {
-          apiKey: process.env.REACT_APP_APIKEY,
-        },
-      })
-      .then((response) => {
-        localStorage.setItem("token", response.data.token);
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        setValidation(error.response.data);
-      });
-  };
+          navigate("/home");
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Invalid email and/or password.");
+        });
+    },
+  });
 
   return (
     <>
-      <div className="login">
-        <div className="col-1">
+      <div className="row">
+        <div className="column">
           <h2>Sign In</h2>
-          <span>register and enjoy the service</span>
-
-          <form id="form" className="flex flex-col" onSubmit={loginHandler}>
-            <input type="email" placeholder="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            {validation.email && <small className="text-danger">{validation.email[0]}</small>}
+          <form id="form" className="flex flex-col" onSubmit={formik.handleSubmit}>
+            <label>Email address</label>
+            <input type="email" placeholder="email" name="email" {...formik.getFieldProps("email")} />
+            {formik.touched.email && formik.errors.email ? <div className="no-input">{formik.errors.email}</div> : null}
 
             <label htmlFor="password" className="form-label">
               Password
             </label>
-            <input type="password" id="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {validation.password && <small className="text-danger">{validation.password[0]}</small>}
-            <button className="btn">Sign In</button>
+            <input type="password" name="password" placeholder="password" {...formik.getFieldProps("password")} autoComplete="off" />
+            {formik.touched.password && formik.errors.password ? <div className="no-input">{formik.errors.password}</div> : null}
+
+            <button className="btn btn-primary submit-btn">Sign In</button>
           </form>
+        </div>
+        <div className="column">
+          <h2>Column 2</h2>
+          <p>Some text..</p>
         </div>
       </div>
     </>

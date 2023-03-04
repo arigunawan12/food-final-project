@@ -3,8 +3,6 @@ export * from "./Details";
 export * from "./Favorites";
 export * from "./Home";
 export * from "./Login";
-export * from "./NotAdmin";
-export * from "./NotLogin";
 export * from "./Profile";
 export * from "./Register";
 export * from "./Welcome";
