@@ -1,86 +1,117 @@
-import axios from "axios";
-import { useState } from "react";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useFormik, Form } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+// import "./register.css";
 
-const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordRepeat, setPasswordRepeat] = useState("");
-  const [role, setRole] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [profilePictureUrl, setprofilePictureUrl] = useState("");
-
-  // validation
-  const [validation, setValidation] = useState([]);
+const Login = () => {
   const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      passwordRepeat: "",
+      role: "",
+      phoneNumber: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().min(5, "Must be 5 characters or more").max(15, "Must be less than 15 characters").required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+      password: Yup.string().min(8, "Minimum 8 characters").required("Required"),
+      passwordRepeat: Yup.string()
+        .oneOf([Yup.ref("password")], "Password does not match")
+        .required("Required"),
+      role: Yup.string().oneOf(["admin", "user"], "Select Role").required("Required"),
+      phoneNumber: Yup.string()
+        .min(10, "Must be 10 characters or more")
+        .max(12, "Must be 12 characters or less")
+        .matches(/^[0-9]{10,12}$/, "Must be in digit")
+        .required("Required"),
+    }),
 
-  const registerHandler = async (e) => {
-    e.preventDefault();
+    onSubmit: (values) => {
+      axios
+        .post(`${process.env.REACT_APP_BASEURL}api/v1/register`, values, {
+          headers: {
+            apiKey: `${process.env.REACT_APP_APIKEY}`,
+          },
+          data: {
+            email: values.email,
+            password: values.password,
+            passwordRepeat: values.passwordRepeat,
+            role: values.role,
+            profilePictureUrl: values.profilePictureUrl,
+            phoneNumber: values.phoneNumber,
+          },
+        })
+        .then(() => {
+          alert("Your account has been succesfully register");
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Registration failed. Please try again!");
+        });
+    },
+  });
 
-    const formData = new FormData();
-
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("passwordRepeat", passwordRepeat);
-    formData.append("role", role);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("profilePictureUrl", profilePictureUrl);
-
-    await axios
-      .post(`${process.env.REACT_APP_BASEURL}api/v1/register`, formData, {
-        headers: {
-          apiKey: process.env.REACT_APP_APIKEY,
-        },
-      })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        setValidation(error.response.data);
-      });
-  };
   return (
     <>
-      <div className="register">
-        <div className="col-1">
+      <div className="row">
+        <div className="column">
           <h2>Sign In</h2>
-          <span>register and enjoy the service</span>
+          <Form id="form" className="flex flex-col" onSubmit={formik.handleSubmit}>
+            <label>Full Name</label>
+            <input type="text" placeholder="name" name="name" {...formik.getFieldProps("name")} />
+            {formik.touched.name && formik.errors.name ? <div className="no-input">{formik.errors.name}</div> : null}
 
-          <form id="form" className="flex flex-col" onSubmit={registerHandler}>
-            <input type="text" placeholder="Nama Lengkap" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            {validation.name && <small className="text-danger">{validation.name[0]}</small>}
-
-            <input type="email" placeholder="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            {validation.email && <small className="text-danger">{validation.email[0]}</small>}
+            <label>Email address</label>
+            <input type="email" placeholder="email" name="email" {...formik.getFieldProps("email")} />
+            {formik.touched.email && formik.errors.email ? <div className="no-input">{formik.errors.email}</div> : null}
 
             <label htmlFor="password" className="form-label">
               Password
             </label>
-            <input type="password" id="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {validation.password && <small className="text-danger">{validation.password[0]}</small>}
+            <input type="password" name="password" placeholder="password" {...formik.getFieldProps("password")} autoComplete="off" />
+            {formik.touched.password && formik.errors.password ? <div className="no-input">{formik.errors.password}</div> : null}
 
-            <input type="password" placeholder="confirm password" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)} />
-            <input type="number" placeholder="mobile number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-            <select>
-              <option value={role} onChange={(e) => setRole(e.target.value)}>
-                Select Role
-              </option>
+            <div>Confirm Password</div>
+            <input type="password" name="passwordRepeat" placeholder="Confirm password" {...formik.getFieldProps("passwordRepeat")} />
+            {formik.touched.passwordRepeat && formik.errors.passwordRepeat ? <div className="no-input">{formik.errors.passwordRepeat}</div> : null}
+
+            <div>Role</div>
+            <select id="role" name="role" component="select" multiple={false} onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.role}>
+              <option value="">Select Role</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
             </select>
-            <input type="file" placeholder="upload image" value={profilePictureUrl} onChange={(e) => setprofilePictureUrl(e.target.value)} />
-            <button className="btn">Sign In</button>
-          </form>
+
+            <div>Phone Number</div>
+            <input id="phoneNumber" name="phoneNumber" type="text" placeholder="Enter phone number" {...formik.getFieldProps("phoneNumber")} />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <div className="no-input">{formik.errors.phoneNumber}</div> : null}
+
+            <div>
+              <label> Upload File</label>
+              <input type="file" name="photo" accept="image/*" onChange={(e) => formik.setFieldValue("photo", e.currentTarget.files[0])} />
+            </div>
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <div className="no-input">{formik.errors.phoneNumber}</div> : null}
+
+            <button className="btn btn-primary submit-btn">Sign In</button>
+          </Form>
+          <div className="bottom-container text-center">
+            <p>
+              Have an account? <p onClick={() => navigate("/login")}> Login</p>
+            </p>
+          </div>
         </div>
-        <div className="col-2">
-          <img src="" alt="" />
-        </div>
+        {/* <div className="column">
+          <h2>Column 2</h2>
+          <p>Some text..</p>
+        </div> */}
       </div>
     </>
   );
 };
 
-export default Register;
+export default Login;
