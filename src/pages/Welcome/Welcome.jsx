@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useFormik } from "formik";
-import { Navbar, Footer, Card } from "../../components";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Welcome = () => {
@@ -9,8 +9,6 @@ const Welcome = () => {
   console.log(formik);
   return (
     <>
-      <Navbar />
-      <Card />
       <div className="container">
         <div className="d-flex align-items-center" style={{ height: "100vh" }}>
           <div style={{ width: "100%" }}>
@@ -25,7 +23,6 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

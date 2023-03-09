@@ -9,11 +9,11 @@ function App() {
         <Route path="/allusers" element={<AllUsers />} />
         <Route path="/details" element={<Details />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/addfood" element={<AddFood />} />
         <Route path="/foodlist" element={<FoodList />} />
       </Routes>

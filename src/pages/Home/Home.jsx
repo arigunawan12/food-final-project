@@ -1,9 +1,14 @@
 import React from "react";
-
+import { Navbar, Footer, Card, Carousel } from "../../components";
+import { FoodList } from "../FoodList";
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Navbar />
+      <Carousel />
+      <FoodList />
+      <Card />
+      <Footer />
     </div>
   );
 };
