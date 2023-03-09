@@ -6,3 +6,5 @@ export * from "./Login";
 export * from "./Profile";
 export * from "./Register";
 export * from "./Welcome";
+export * from "./AddFood";
+export * from "./FoodList";

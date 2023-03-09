@@ -1,0 +1,46 @@
+.brand {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #4b6587;
+}
+
+.brand:hover {
+  color: #65bdc6 !important;
+}
+
+.navbar {
+  background-color: transparent !important;
+}
+
+.navbar-font {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  gap: 1px;
+}
+
+.navbar-active {
+  background-color: #c8c6c6a8 !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: solid 1px #4b65878e;
+  box-shadow: 0 3px 20px #aba9a9;
+}
+
+.offcanvas {
+  --bs-offcanvas-bg: #f7f6f2;
+  --bs-offcanvas-border-color: #c8c6c6;
+}
+
+.offcanvas-title {
+  font-family: "Chillax", sans-serif;
+  font-weight: 500;
+  color: #4b6587;
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: #c8c6c6;
+  --bs-dropdown-link-hover-bg: #4b6587b1;
+  --bs-dropdown-link-hover-color: #fff;
+  --bs-dropdown-link-active-bg: #4b6587;
+}

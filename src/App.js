@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { AllUsers, Details, Favorites, Home, Login, Profile, Register, Welcome } from "./pages";
+import { AddFood, AllUsers, Details, Favorites, FoodList, Home, Login, Profile, Register, Welcome } from "./pages";
 
 function App() {
   return (
@@ -14,6 +14,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Welcome />} />
+        <Route path="/addfood" element={<AddFood />} />
+        <Route path="/foodlist" element={<FoodList />} />
       </Routes>
     </div>
   );

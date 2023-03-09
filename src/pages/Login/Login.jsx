@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import "./login.css";
-import { Footer } from "../../components/index";
+import { Footer, Navbar } from "../../components/index";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ const Login = () => {
 
   return (
     <>
+      <Navbar />
       <div className="row">
         <div className="column">
           <h2>Sign In</h2>
