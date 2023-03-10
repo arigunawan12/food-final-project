@@ -97,6 +97,7 @@ function ListCard() {
                           {food.totalLikes}
                         </span>
                       </Card.Body>
+                      <button className="button button-primary">Find out more</button>
                     </Card>
                   </CardGroup>
                 </Col>

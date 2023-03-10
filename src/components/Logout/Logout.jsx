@@ -17,7 +17,7 @@ function Logout() {
         localStorage.removeItem("name");
         localStorage.removeItem("role");
         window.location.reload();
-        window.location.href = "/";
+        window.location.href = "/login";
       })
       .catch((error) => {
         console.log(error);

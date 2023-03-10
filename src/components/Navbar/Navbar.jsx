@@ -11,7 +11,7 @@ const BrandExample = () => {
           <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark">
             <Container fluid>
               <Navbar.Brand href="/" className="brand">
-                <img src={imgLogo} alt="Foodieasy" style={{ maxWidth: "30px" }} /> foodieasy
+                <img src={imgLogo} alt="Foodieasy" style={{ maxWidth: "30px" }} /> FoodFire
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="end">
@@ -30,7 +30,7 @@ const BrandExample = () => {
                     <Nav.Link href="/foodlist">Food List</Nav.Link>
                     <NavDropdown align="end" title={localStorage.getItem("name")} id="collasible-nav-dropdown" className="nav-dropdown">
                       <NavDropdown.Item href="/profile">Edit Profile</NavDropdown.Item>
-                      {localStorage.getItem("role") === "admin" ? <NavDropdown.Item href="/all-users">All Users</NavDropdown.Item> : null}
+                      {localStorage.getItem("role") === "admin" ? <NavDropdown.Item href="/allusers">All Users</NavDropdown.Item> : null}
                       <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item>

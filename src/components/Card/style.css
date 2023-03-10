@@ -1,83 +1,16 @@
-.pd-10 {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.foodcard1-all {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 20px;
-  padding-bottom: 15px;
-}
-
-.foodcard1-box {
-  position: relative;
-  border-radius: 4px;
-
-  transition: transform 0.5s ease;
-}
-
-Card:hover {
-  transform: scale(1.03);
-}
-
-.foodcard1-img {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 15px;
-
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-
-.foodcard1-img img {
-  width: 100%;
-  height: 305px;
-  object-fit: cover;
-}
-
-a {
-  text-decoration: none;
-}
-
-.foodcard1-box-text {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-}
-
-.foodcard1-box-text h4 {
-  font-family: "General Sans", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 2px;
-  color: #4b6587;
-}
-
-.foodcard1-box-text h4:hover {
-  cursor: pointer;
-  color: #65bdc6;
-  text-decoration: underline;
-}
-
-.foodcard1-box-text p {
-  margin-bottom: 0px;
-  font-weight: 500;
+.button-primary {
+  border: none;
+  box-shadow: none;
+  font-family: inherit;
+  background-color: transparent;
+  color: blue;
   font-size: 15px;
-  position: relative;
-  color: #4b6587;
-  line-height: 18px;
-  margin-bottom: 2px;
+  transition: 0.25s;
 }
 
-.card-symbols {
-  font-family: "General Sans", sans-serif;
-  font-size: 14px;
-  margin-top: 2px;
+i {
+  padding-right: 4px;
+}
+.button-primary:hover {
+  transform: translateX(15px);
 }

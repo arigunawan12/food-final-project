@@ -2,35 +2,34 @@ import React from "react";
 import kebab from "../../Images/kebab.jpg";
 import toast from "../../Images/toast.jpg";
 import spaghetti from "../../Images/spaghetti.jpg";
+import "./style.css";
 
-const Carousel = () => {
+const carousel = () => {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img className="d-block w-100" src={kebab} alt="First slide" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img className="d-block w-100" src={toast} alt="Second slide" />
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src={kebab} class="d-block w-100" alt="..." />
+        </div>
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img className="d-block w-100" src={spaghetti} alt="Third slide" />
+        <div class="carousel-item active">
+          <img src={toast} class="d-block w-100" alt="..." />
+        </div>
 
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+        <div class="carousel-item active">
+          <img src={spaghetti} class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   );
 };
 
-export default Carousel;
+export default carousel;

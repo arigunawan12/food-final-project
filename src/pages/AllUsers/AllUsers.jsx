@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Form, Formik, useField } from "formik";
 import thumbnail2 from "../../Images/thumbnail2.jpg";
-import { Carousel } from "../../components";
+import { Navbar } from "../../components";
 
 const AllUsers = () => {
   const [data, setData] = useState();
@@ -62,9 +62,7 @@ const AllUsers = () => {
   };
   return (
     <section>
-      <div>
-        <Carousel />
-      </div>
+      <Navbar />
       <div className="container-md">
         <div className="text-center">
           <h2>All User</h2>
