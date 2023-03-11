@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Form, Formik, useField } from "formik";
-import defaultImage from "../images/default.webp";
+import defaultImage from "./images/default.webp";
 
 const Profile = () => {
   const [data, setData] = useState();

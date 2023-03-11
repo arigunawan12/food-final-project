@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Formik, Form, useField, Field, FieldArray } from "formik";
 import * as Yup from "yup";
-import { AddFood } from "..";
+import AddFood from "./AddFood";
 
 const FoodBoard = () => {
   const [data, setData] = useState();

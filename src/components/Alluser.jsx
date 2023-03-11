@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Form, Formik, useField } from "formik";
 
-import defaultImage from "../../components/images/default.webp";
-import "../../style.css";
+import defaultImage from "./images/default.webp";
+import "../style.css";
 
 const Alluser = () => {
   const [data, setData] = useState();

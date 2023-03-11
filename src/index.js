@@ -1,7 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { NavBar, Register, Login, Profile, Alluser, Home, MyFavorite, FoodBoard, FoodRating, Footer } from "./components/index";
+import NavBar from "./components/NavBar";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import Alluser from "./components/Alluser";
+import Home from "./components/Home";
+import MyFavorite from "./components/MyFavorite";
+import FoodBoard from "./components/FoodBoard";
+import FoodRating from "./components/FoodRating";
+import Footer from "./components/Footer";
 
 const router = createBrowserRouter([
   {

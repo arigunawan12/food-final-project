@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../../style.css";
-import meat from "../images/meat.webp";
+import "../style.css";
+import meat from "./images/meat.webp";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
