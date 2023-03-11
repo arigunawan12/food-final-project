@@ -1,16 +1,18 @@
-import { Card, Container, CardGroup, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Col, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style.css";
 
 function Footer() {
   return (
     <>
       {localStorage.getItem("token") ? (
-        <Container>
-          <CardGroup>
-            <Card className="footer">
-              <h4>Food Fire</h4>
-              <ul className="list-group list-group-horizontal d-flex justify-content-center">
+        <Container fluid>
+          <Row className="row-cols-lg-4 row-cols-md-2 row-cols-1 gy-4 bg-dark text-light">
+            <Col className="footer">
+              <h3 className="mx-auto">
+                <span className="text-light">Food</span>
+                <span className="text-danger">Record</span>
+              </h3>
+              <ul className="list-group list-group-horizontal d-flex justify-content-center w-100">
                 <li className="list-group-item list-group-item-success">
                   <i className="bi bi-facebook"></i>
                 </li>
@@ -24,8 +26,8 @@ function Footer() {
                   <i className="bi bi-github"></i>
                 </li>
               </ul>
-            </Card>
-            <Card className="footer">
+            </Col>
+            <Col className="footer">
               <ul className="list-group list-group-flush">
                 <h4>Support</h4>
 
@@ -34,9 +36,9 @@ function Footer() {
                 <li>Privacy Policy</li>
                 <li>Careers</li>
               </ul>
-            </Card>
+            </Col>
 
-            <Card className="footer">
+            <Col className="footer">
               <div className="footer-col">
                 <h4>Get Help</h4>
                 <ul className="list-group list-group-flush">
@@ -46,9 +48,9 @@ function Footer() {
                   <li>Cookie Preferences</li>
                 </ul>
               </div>
-            </Card>
+            </Col>
 
-            <Card className="footer">
+            <Col Col className="footer">
               <div className="footer-col">
                 <h4>Stay up to date the latest from us</h4>
                 <Form>
@@ -58,10 +60,10 @@ function Footer() {
                   Sign Up
                 </Button>
               </div>
-            </Card>
-          </CardGroup>
+            </Col>
+          </Row>
 
-          <div className="h5 text-secondary">
+          <div className="h5 text-dark text-center mt-2">
             © All Rights Reserved 2023. Created by <b>Wahyu Ari Gunawan</b>.
           </div>
         </Container>

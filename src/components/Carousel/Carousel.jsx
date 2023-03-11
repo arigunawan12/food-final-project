@@ -1,35 +1,35 @@
 import React from "react";
-import kebab from "../../Images/kebab.jpg";
-import toast from "../../Images/toast.jpg";
-import spaghetti from "../../Images/spaghetti.jpg";
-import "./style.css";
+import dinners from "../images/dinners.webp";
+import lunch from "../images/lunch.webp";
+import breakfast from "../images/breakfast.webp";
 
-const carousel = () => {
+const Carousel = () => {
   return (
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src={kebab} class="d-block w-100" alt="..." />
-        </div>
-
-        <div class="carousel-item active">
-          <img src={toast} class="d-block w-100" alt="..." />
-        </div>
-
-        <div class="carousel-item active">
-          <img src={spaghetti} class="d-block w-100" alt="..." />
+    <section>
+      <div className="container-fluid p-0">
+        <div id="myCarousel" className="carousel slide carousel-fade mb-4" data-ride="carousel">
+          <div className="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div className="carousel-inner">
+            <div className="carousel-item active" style={{ backgroundImage: `url(${dinners})` }}></div>
+            <div className="carousel-item" style={{ backgroundImage: `url(${lunch})` }}></div>
+            <div className="carousel-item" style={{ backgroundImage: `url(${breakfast})` }}></div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+    </section>
   );
 };
 
-export default carousel;
+export default Carousel;
