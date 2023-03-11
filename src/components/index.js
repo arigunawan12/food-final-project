@@ -1,6 +1,6 @@
 export * from "./addfood";
 export * from "./alluser";
-export * from "./carousel";
+export * from "./Carousel";
 export * from "./foodboard";
 export * from "./foodrating";
 export * from "./footer";
