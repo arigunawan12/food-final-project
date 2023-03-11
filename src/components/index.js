@@ -3,7 +3,7 @@ export * from "./alluser";
 export * from "./Carousel";
 export * from "./foodboard";
 export * from "./foodrating";
-export * from "./footer";
+export * from "./Footer";
 export * from "./home";
 export * from "./login";
 export * from "./myfavorite";
