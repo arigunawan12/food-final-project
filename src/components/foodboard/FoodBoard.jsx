@@ -90,7 +90,7 @@ const FoodBoard = () => {
   return (
     <section>
       <div className="container-md">
-        <h2 className="text-center mt-4 fw-bolder">Food Board</h2>
+        <h2 className="text-center mt-4 fw-bolder">Food Recipe</h2>
         <div className="text-center mt-4">
           <button type="button" className="btn bgcolor1 text-light btn-danger  btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
             + Add Food

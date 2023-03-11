@@ -8,7 +8,7 @@ const MyFavorite = () => {
   const getLikeFood = () => {
     axios({
       method: "get",
-      url: "https://api-bootcamp.do.dibimbing.id/api/v1/like-foods",
+      url: `${process.env.REACT_APP_BASEURL}api/v1/like-foods`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         apiKey: process.env.REACT_APP_APIKEY,
@@ -29,7 +29,7 @@ const MyFavorite = () => {
     if (!isLike) {
       axios({
         method: "post",
-        url: "https://api-bootcamp.do.dibimbing.id/api/v1/like",
+        url: `${process.env.REACT_APP_BASEURL}api/v1/like`,
         data: {
           foodId: id,
         },
@@ -47,7 +47,7 @@ const MyFavorite = () => {
     } else {
       axios({
         method: "post",
-        url: "https://api-bootcamp.do.dibimbing.id/api/v1/unlike",
+        url: `${process.env.REACT_APP_BASEURL}api/v1/unlike`,
         data: {
           foodId: id,
         },
@@ -76,38 +76,25 @@ const MyFavorite = () => {
               return (
                 <div className="card-group" key={r.id}>
                   <div className="card h-100 food-card shadow">
-                    <img
-                      src={r.imageUrl}
-                      className="card-img-top food-card-image mx-auto mt-3 "
-                      alt={r.name}
-                    />
+                    <img src={r.imageUrl} className="card-img-top food-card-image mx-auto" alt={r.name} />
                     <div className="card-body">
                       <h5 className="card-title text-center">{r.name}</h5>
                       <p className="card-text">{r.description}</p>
                       <i className="fa-brands fa-elementor">
                         {r.ingredients.map((m, index) => {
-                          return (
-                            <span key={index}>{(index ? ", " : "") + m}</span>
-                          );
+                          return <span key={index}>{(index ? ", " : "") + m}</span>;
                         })}
                       </i>
                     </div>
                     <div className="card-footer ">
                       <small className="text-muted">
                         <Link to={`/foodrating/${r.id}`}>
-                          <i
-                            className="fa-solid fa-star m-1"
-                            style={{ color: `gold` }}
-                          ></i>
+                          <i className="bi bi-star-fill" style={{ color: `gold` }}></i>
                         </Link>
                         {r.rating}
                       </small>
                       <small className="text-muted">
-                        <i
-                          className="fa-solid fa-heart m-1"
-                          style={{ color: `${r.isLike ? "red" : ""}` }}
-                          onClick={() => handleLike(r.id, r.isLike)}
-                        ></i>
+                        <i className="bi bi-heart-fill m-1" style={{ color: `${r.isLike ? "red" : ""}` }} onClick={() => handleLike(r.id, r.isLike)}></i>
                         {r.totalLikes}
                       </small>
                     </div>

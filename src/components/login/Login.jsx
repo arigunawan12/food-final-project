@@ -3,6 +3,7 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./";
 
 const Login = () => {
   const onSubmit = (values, { resetForm }) => {
@@ -43,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className="background">
       <Formik
         initialValues={{
           email: "",
@@ -55,18 +56,17 @@ const Login = () => {
         })}
         onSubmit={onSubmit}
       >
-        <div className="container-md">
-          <div className="text-center">{/* <img src={ramen} alt="ramen" style={{ maxWidth: `20%` }} className="img-fluid align-items-center" /> */}</div>
+        <div className="container-md mb-3 ">
           <div className="row justify-content-center align-items-center">
-            <div className="col-md-4 border rounded p-4 shadow">
+            <div className="col-md-4 border border-danger my-5 rounded p-4 shadow">
               <div className="text-center">
-                <h2 className="color1">Log In</h2>
-                <p>
+                <h2>Log In</h2>
+                <h4>
                   Don't have an account?
                   <Link className="m-1" to="/">
                     Register
                   </Link>
-                </p>
+                </h4>
               </div>
               <Form>
                 <MyTextInput label="Email Address" name="email" type="email" placeholder="janedoe@yahoo.com" />

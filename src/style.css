@@ -1,6 +1,6 @@
 * {
   font-family: "Patrick Hand", cursive, "Source Sans Pro", sans-serif;
-  margin: 0;
+
   padding: 0;
   border: 0;
   font-size: 100%;
@@ -9,14 +9,7 @@
 }
 body {
   background-color: #f0b7da !important;
-}
-
-.bgcolor1 {
-  background: #fff;
-}
-
-.bgcolor2 {
-  background: #bfffe1;
+  min-height: 100%;
 }
 
 .card-user {
@@ -74,12 +67,25 @@ body {
   border-radius: 50%;
   border: 2px solid #f0b7da;
 }
+
 .footer {
-  margin: 15px 0;
-  box-sizing: border-box;
+  width: 100%;
   padding: 10px;
   border-style: none !important;
+  margin-top: 20px;
 }
 .footer ul {
   list-style: none;
+}
+
+.background {
+  background-image: url("./components/images/wallpaper.webp");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 95vh;
+}
+
+.sign-card {
+  width: 420px;
 }

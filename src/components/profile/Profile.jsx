@@ -2,15 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Form, Formik, useField } from "formik";
-import thumbnail from "../images/meat.webp";
+import defaultImage from "../images/default.webp";
 
 const Profile = () => {
   const [data, setData] = useState();
+  const onImageError = (e) => {
+    e.target.src = defaultImage;
+  };
 
   const getUserProfile = () => {
     axios({
       method: "get",
-      url: "https://api-bootcamp.do.dibimbing.id/api/v1/user",
+      url: `${process.env.REACT_APP_BASEURL}api/v1/user`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         apiKey: process.env.REACT_APP_APIKEY,
@@ -30,7 +33,7 @@ const Profile = () => {
   const onSubmit = (values) => {
     axios({
       method: "post",
-      url: "https://api-bootcamp.do.dibimbing.id/api/v1/update-profile",
+      url: `${process.env.REACT_APP_BASEURL}api/v1/update-profile`,
       data: {
         name: values.name,
         email: values.email,
@@ -46,7 +49,7 @@ const Profile = () => {
         console.log(response);
         axios({
           method: "post",
-          url: `https://api-bootcamp.do.dibimbing.id/api/v1/update-user-role/${data && data.id}`,
+          url: `${process.env.REACT_APP_BASEURL}api/v1/update-user-role/${data && data.id}`,
           data: {
             role: values.role,
           },
@@ -93,13 +96,12 @@ const Profile = () => {
 
   return (
     <section>
-      <div className="container-md">
+      <div className="container-md mb-3">
         <div className="text-center">
           <h2>My Profile</h2>
         </div>
         <div className="card mx-auto card-user shadow" style={{ width: `30%` }}>
-          <img src={thumbnail} alt="thumbnail" className="user-card-image1" />
-          <img src={data && data.profilePictureUrl} className="user-card-image2 img-thumbnail mx-auto" alt={data && data.name} />
+          <img src={data && data.profilePictureUrl ? data && data.profilePictureUrl : defaultImage} className="img-fluid m-0 img-profile-page" alt={data && data.name} onError={onImageError} />
           <div className="card-body">
             <h5 className="card-title text-center">{data && data.name}</h5>
             <p className="card-text">
@@ -116,7 +118,7 @@ const Profile = () => {
             </p>
           </div>
           <div className="card-footer text-center">
-            <button type="button" className="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" className="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">
               Update
             </button>
           </div>
@@ -172,7 +174,7 @@ const Profile = () => {
                         ) : null}
 
                         <div className="text-center">
-                          <button type="submit" className="btn btn-dark">
+                          <button type="submit" className="btn btn-danger">
                             Save
                           </button>
                         </div>

@@ -6,11 +6,11 @@ function Footer() {
     <>
       {localStorage.getItem("token") ? (
         <Container fluid>
-          <Row className="row-cols-lg-4 row-cols-md-2 row-cols-1 gy-4 bg-dark text-light">
+          <Row className="row-cols-lg-4 row-cols-md-2 row-cols-1 bg-dark text-light">
             <Col className="footer">
               <h3 className="mx-auto">
                 <span className="text-light">Food</span>
-                <span className="text-danger">Record</span>
+                <span className="text-danger">Recipe</span>
               </h3>
               <ul className="list-group list-group-horizontal d-flex justify-content-center w-100">
                 <li className="list-group-item list-group-item-success">
@@ -63,7 +63,7 @@ function Footer() {
             </Col>
           </Row>
 
-          <div className="h5 text-dark text-center mt-2">
+          <div className="h4 text-dark text-center mt-2">
             © All Rights Reserved 2023. Created by <b>Wahyu Ari Gunawan</b>.
           </div>
         </Container>

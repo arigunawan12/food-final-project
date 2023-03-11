@@ -52,7 +52,7 @@ const NavBar = () => {
         <Link className="navbar-brand" to="/">
           <img src={meat} alt="foodAddict" width="30" height="30" className="m-1" />
           <span className="text-light m-1 fw-bold">Food</span>
-          <span className="text-danger fw-bold">Record</span>
+          <span className="text-danger fw-bold">Recipe</span>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -76,7 +76,7 @@ const NavBar = () => {
             {localStorage.getItem("role") === "admin" ? (
               <li className="nav-item fw-bold">
                 <Link className="nav-link text-light" to="/foodboard">
-                  Food Board
+                  Food Recipe
                 </Link>
               </li>
             ) : null}

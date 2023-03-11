@@ -3,14 +3,11 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import chicken from "../images/chicken.png";
-// import salmon from "../images/salmon.png";
-// import tuna from "../images/tuna.png";
 
 const onSubmit = (values, { resetForm }) => {
   axios({
     method: "post",
-    url: "https://api-bootcamp.do.dibimbing.id/api/v1/register",
+    url: `${process.env.REACT_APP_BASEURL}api/v1/register`,
     data: {
       name: values.name,
       email: values.email,
@@ -60,7 +57,7 @@ const MySelect = ({ label, ...props }) => {
 
 const Register = () => {
   return (
-    <section>
+    <section className="background">
       <Formik
         initialValues={{
           name: "",
@@ -92,37 +89,17 @@ const Register = () => {
         })}
         onSubmit={onSubmit}
       >
-        <div className="container-md mb-3">
+        <div className="container-md mb-3 ">
           <div className="row justify-content-center align-items-center">
-            <div className="col-md-3">
-              {/* <img
-                src={chicken}
-                alt="chicken"
-                style={{ maxWidth: `70%` }}
-                className="img-fluid"
-              />
-              <img
-                src={salmon}
-                alt="salmon"
-                style={{ maxWidth: `70%` }}
-                className="img-fluid"
-              />
-              <img
-                src={tuna}
-                alt="tuna"
-                style={{ maxWidth: `70%` }}
-                className="img-fluid"
-              /> */}
-            </div>
-            <div className="col-md-4 border rounded p-4 shadow">
+            <div className="col-md-4 border border-danger rounded p-4 my-5 shadow">
               <div className="text-center">
                 <h2 className="color1">Register</h2>
-                <p>
+                <h4>
                   Already have an account?
                   <Link className="text-decoration-none m-1 color2" to="/login">
                     Login
                   </Link>
-                </p>
+                </h4>
               </div>
               <Form>
                 <MyTextInput label="Name" name="name" type="text" placeholder="Jane Doe" />
@@ -143,7 +120,7 @@ const Register = () => {
 
                 <MyTextInput label="Phone Number" name="phoneNumber" type="tel" placeholder="Phone Number" />
                 <div className="text-center ">
-                  <button type="submit" className="btn bgcolor1 text-light btn-warning shadow">
+                  <button type="submit" className="btn btn-danger">
                     Submit
                   </button>
                 </div>
