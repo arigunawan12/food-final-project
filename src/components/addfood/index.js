@@ -1,3 +1,3 @@
-import AddFood from "./AddFood";
+import AddFood from "./AddFood.jsx";
 
 export { AddFood };

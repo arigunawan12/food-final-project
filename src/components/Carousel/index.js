@@ -1,3 +1,3 @@
-import Carousel from "./Carousel.jsx";
+import Carousel from "./Carousel";
 
 export { Carousel };
