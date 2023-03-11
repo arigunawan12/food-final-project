@@ -1,4 +1,3 @@
-import React from "react";
 import dinners from "../images/dinners.webp";
 import lunch from "../images/lunch.webp";
 import breakfast from "../images/breakfast.webp";
