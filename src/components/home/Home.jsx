@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Carousel from "../carousel/Carousel";
+import { Carousel } from "../../components";
 
 const Home = () => {
   const [data, setData] = useState();
