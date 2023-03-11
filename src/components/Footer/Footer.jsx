@@ -27,7 +27,7 @@ function Footer() {
                 </li>
               </ul>
             </Col>
-            <Col className="footer">
+            <div className="footer">
               <ul className="list-group list-group-flush">
                 <h4>Support</h4>
 
@@ -36,7 +36,7 @@ function Footer() {
                 <li>Privacy Policy</li>
                 <li>Careers</li>
               </ul>
-            </Col>
+            </div>
 
             <Col className="footer">
               <div className="footer-col">
@@ -50,7 +50,7 @@ function Footer() {
               </div>
             </Col>
 
-            <Col Col className="footer">
+            <Col className="footer">
               <div className="footer-col">
                 <h4>Stay up to date the latest from us</h4>
                 <Form>
