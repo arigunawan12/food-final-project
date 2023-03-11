@@ -84,7 +84,7 @@ const FoodRating = () => {
 
   return (
     <section>
-      <div className="container-md mt-3">
+      <div className="container-md mb-3">
         <h2 className="color1 text-center mt-4 mb-4 fw-bolder">Food Rating</h2>
         <div className="card mb-3 mx-auto food-card shadow" style={{ maxWidth: `540px` }}>
           <div className="row g-0">

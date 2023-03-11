@@ -6,7 +6,7 @@ function Footer() {
     <>
       {localStorage.getItem("token") ? (
         <Container fluid>
-          <Row className="row-cols-lg-4 row-cols-md-2 row-cols-1 bg-dark text-light">
+          <Row className="row-cols-lg-4 row-cols-md-2 row-cols-1 bg-dark text-light mt-3">
             <Col className="footer">
               <h3 className="mx-auto">
                 <span className="text-light">Food</span>
