@@ -86,6 +86,7 @@ const Register = () => {
             .max(12, "Must be 12 characters or less")
             .matches(/^[0-9]{10,12}$/, "Must be in digit")
             .required("Required"),
+            
         })}
         onSubmit={onSubmit}
       >

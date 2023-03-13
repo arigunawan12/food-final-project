@@ -11,7 +11,7 @@ const NavBar = () => {
     if (localStorage.getItem("token")) {
       axios({
         method: "get",
-        url: "https://api-bootcamp.do.dibimbing.id/api/v1/user",
+        url: `${process.env.REACT_APP_BASEURL}api/v1/user`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           apiKey: process.env.REACT_APP_APIKEY,
@@ -29,7 +29,7 @@ const NavBar = () => {
   const handleLogout = () => {
     axios({
       method: "get",
-      url: "https://api-bootcamp.do.dibimbing.id/api/v1/logout",
+      url: `${process.env.REACT_APP_BASEURL}api/v1/logout`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         apiKey: process.env.REACT_APP_APIKEY,
@@ -47,7 +47,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-dark ">
+    <nav className="navbar navbar-expand-lg bg-dark fixed-top">
       <div className="container-md">
         <Link className="navbar-brand" to="/">
           <img src={meat} alt="foodAddict" width="30" height="30" className="m-1" />

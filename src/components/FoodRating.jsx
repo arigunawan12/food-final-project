@@ -95,7 +95,7 @@ const FoodRating = () => {
               <div className="card-body">
                 <h5 className="card-title">{data && data.data.name}</h5>
                 <p className="card-text">
-                  <i class="bi bi-card-list me-2" />
+                  <i className="bi bi-card-list me-2" />
                   {data && data.data.description}
                 </p>
                 <p className="card-text">

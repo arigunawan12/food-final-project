@@ -2,6 +2,8 @@ import { Container, Form, Button, Col, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
+  const d = new Date();
+  let year = d.getFullYear();
   return (
     <>
       {localStorage.getItem("token") ? (
@@ -64,7 +66,7 @@ function Footer() {
           </Row>
 
           <div className="h4 text-dark text-center mt-2">
-            © All Rights Reserved 2023. Created by <b>Wahyu Ari Gunawan</b>.
+            © All Rights Reserved <span>{year}</span>. Created by <b>Wahyu Ari Gunawan</b>.
           </div>
         </Container>
       ) : null}
