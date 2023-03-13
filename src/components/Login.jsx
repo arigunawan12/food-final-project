@@ -50,12 +50,12 @@ const Login = () => {
           password: "",
         }}
         validationSchema={Yup.object({
-          email: Yup.string().required("Required"),
-          password: Yup.string().required("Required"),
+          email: Yup.string().required("'Please Enter your Email"),
+          password: Yup.string().required("Please Enter your password"),
         })}
         onSubmit={onSubmit}
       >
-        <div className="container-md mb-3 ">
+        <div className="container-md mb-3 mt-5">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-4 border border-danger my-5 rounded p-4 shadow">
               <div className="text-center">

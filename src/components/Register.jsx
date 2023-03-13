@@ -70,27 +70,26 @@ const Register = () => {
         }}
         validationSchema={Yup.object({
           name: Yup.string().min(6, "Must be 6 characters or more").max(20, "Must be 20 characters or less").required("Required"),
-          email: Yup.string().email("Invalid email address").required("Required"),
+          email: Yup.string().email("Invalid email address").required("Please Enter your email"),
           password: Yup.string()
             .min(8, "Must be 8 characters or more")
             .max(20, "Must be 20 characters or less")
             .matches(/^.*(?=.*\d)((?=.*[a-zA-Z]){1}).*$/, "Password must contain atleast one letter and one number")
-            .required("Required"),
+            .required("Please Enter your password"),
           passwordRepeat: Yup.string()
             .oneOf([Yup.ref("password")], "Passwords does not match")
-            .required("Required"),
+            .required("Please Enter your password confirmation"),
           role: Yup.string().oneOf(["admin", "general"], "Invalid Job Type").required("Required"),
-          profilePictureUrl: Yup.string().required("Required"),
+          profilePictureUrl: Yup.string().required("Please upload your profile photo"),
           phoneNumber: Yup.string()
             .min(10, "Must be 10 characters or more")
             .max(12, "Must be 12 characters or less")
             .matches(/^[0-9]{10,12}$/, "Must be in digit")
-            .required("Required"),
-            
+            .required("Please Enter your phone number"),
         })}
         onSubmit={onSubmit}
       >
-        <div className="container-md mb-3 ">
+        <div className="container-md mb-3 mt-5">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-4 border border-danger rounded p-4 my-5 shadow">
               <div className="text-center">
