@@ -11,6 +11,7 @@ import MyFavorite from "./components/MyFavorite";
 import FoodBoard from "./components/FoodBoard";
 import FoodRating from "./components/FoodRating";
 import Footer from "./components/Footer";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

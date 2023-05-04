@@ -41,7 +41,7 @@ const AddFood = ({ onSuccess }) => {
   };
 
   return (
-    <section style={{ background: "#F3CFE5", borderRadius: "2%" }}>
+    <section style={{ borderRadius: "2%" }}>
       <Formik
         initialValues={{
           name: "",

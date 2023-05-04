@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Form, Formik, useField } from "formik";
+import { Card } from "react-bootstrap";
 
 import defaultImage from "./images/default.webp";
 import "../style.css";
@@ -78,11 +79,10 @@ const Alluser = () => {
           {data &&
             data.data.map((r) => {
               return (
-                <div className="col" key={r.id}>
+                <Card style={{ width: "18rem" }} key={r.id}>
                   <div className="card h-100 card-user shadow">
                     <h5 className="card-title text-center my-2">{r.name}</h5>
-                    {/* <img src={thumbnail2} alt="thumbnail2" className="user-card-image1" /> */}
-                    <img src={r.profilePictureUrl ? r.profilePictureUrl : defaultImage} className="img-card-profile mx-auto mb-2" alt={r.name} onError={onImageError} />
+                    <Card.Img src={r.profilePictureUrl ? r.profilePictureUrl : defaultImage} className="img-card-profile mx-auto mb-2" alt={r.name} onError={onImageError} />
                     <div className="card-body card-body-style">
                       <p className="card-text">
                         <i className="bi bi-person-circle me-2"></i>
@@ -124,7 +124,7 @@ const Alluser = () => {
                               </div>
                               <div className="row justify-content-center my-3">
                                 <div className="col-md-12">
-                                  <img src={r.profilePictureUrl ? r.profilePictureUrl : defaultImage} className="img-card-profile mx-auto" alt={r.name} />
+                                  <Card.Img src={r.profilePictureUrl ? r.profilePictureUrl : defaultImage} className="img-card-profile mx-auto" alt={r.name} />
 
                                   <h3 className="card-title text-center mt-2">{r.name}</h3>
                                   <Form>
@@ -148,7 +148,7 @@ const Alluser = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Card>
               );
             })}
         </div>
