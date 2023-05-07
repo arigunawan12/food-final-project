@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -8,6 +7,7 @@ import { Col, Container, Row, FloatingLabel, Form, Button } from "react-bootstra
 const Register = () => {
   const d = new Date();
   let year = d.getFullYear();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -15,6 +15,7 @@ const Register = () => {
       password: "",
       passwordRepeat: "",
       role: "",
+      profilePictureUrl: "",
       phoneNumber: "",
     },
     validationSchema: Yup.object({
@@ -35,7 +36,7 @@ const Register = () => {
         .matches(/^[0-9]{10,12}$/, "Must be in digit")
         .required("Required"),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values) => {
       axios({
         method: "post",
         url: `${process.env.REACT_APP_BASEURL}api/v1/register`,
@@ -55,7 +56,6 @@ const Register = () => {
       })
         .then((res) => {
           console.log(res);
-          resetForm({ values: "" });
           alert("Your account was created successfully! Please Log In to access the website!");
           window.location.href = "/";
         })
@@ -74,12 +74,12 @@ const Register = () => {
             <Form onSubmit={formik.handleSubmit}>
               <FloatingLabel label="Full Name" className="mb-3">
                 <Form.Control id="name" name="name" type="text" placeholder="John Doe" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} />
-                {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
               </FloatingLabel>
+              {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
 
               <FloatingLabel label="Email" className="mb-3">
                 <Form.Control id="email" name="email" type="email" placeholder="name@example.com" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
-                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                {formik.touched.email && formik.errors.email ? <div className="no-input">{formik.errors.email}</div> : null}
               </FloatingLabel>
 
               <FloatingLabel label="Password" className="mb-3">
@@ -93,16 +93,21 @@ const Register = () => {
               </FloatingLabel>
 
               <FloatingLabel label="Role" className="mb-3">
-                <Form.Select aria-label="Default select example">
+                <Form.Select aria-label="Default select example" id="role" name="role" multiple={false} onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.role}>
                   <option>Select Your Role</option>
-                  <option value="1">Admin</option>
-                  <option value="2">User</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
                 </Form.Select>
               </FloatingLabel>
 
               <FloatingLabel label="Phone Number" className="mb-3">
-                <Form.Control id="phoneNumber" name="phoneNumber" type="number" placeholder="********" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phoneNumber} />
+                <Form.Control id="phoneNumber" name="phoneNumber" type="tel" placeholder="081xx" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phoneNumber} />
                 {formik.touched.phoneNumber && formik.errors.phoneNumber ? <div>{formik.errors.phoneNumber}</div> : null}
+              </FloatingLabel>
+
+              <FloatingLabel label="Profile Picture" className="mb-3">
+                <Form.Control id="profilePictureUrl" name="profilePictureUrl" type="link" placeholder="https://" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.profilePictureUrl} />
+                {formik.touched.profilePictureUrl && formik.errors.profilePictureUrl ? <div>{formik.errors.profilePictureUrl}</div> : null}
               </FloatingLabel>
 
               <div className="text-center mt-3 d-grid gap-2">
@@ -113,7 +118,7 @@ const Register = () => {
             </Form>
             <div className="text-center mt-2">
               <p>
-                Have an account?{" "}
+                Have an account?
                 <span>
                   <Link to="/login" className="bottom-hyperlink" style={{ textDecoration: "none", fontWeight: "bold" }}>
                     Sign in here.

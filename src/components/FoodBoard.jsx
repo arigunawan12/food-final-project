@@ -96,13 +96,13 @@ const FoodBoard = () => {
             + Add Food
           </button>
         </div>
-        <div className="row row-cols-1 row-cols-md-4 g-4 mt-1 mb-4">
+        <div className="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-4">
           {data &&
             data.data.map((r) => {
               return (
-                <div className="card-group " key={r.id}>
+                <div className="card-group" key={r.id}>
                   <div
-                    className="card h-100 food-card shadow"
+                    className="card shadow"
                     style={{
                       borderTopRightRadius: `5px`,
                       borderBottomRightRadius: `5px`,
@@ -118,9 +118,9 @@ const FoodBoard = () => {
                         })}
                       </i>
                     </div>
-                    <div className="card-footer text-center">
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button type="button" className="btn btn-outline-danger me-md-2" data-bs-toggle="modal" data-bs-target={`#staticBackdrop_${r.id}`}>
+                    <div className="card-footer text-center ">
+                      <div class="d-flex justify-content-center">
+                        <button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target={`#staticBackdrop_${r.id}`}>
                           Update
                         </button>
                         <button type="button" className="btn bgcolor1 text-light btn-danger shadow" onClick={() => handleDelete(r.id)}>

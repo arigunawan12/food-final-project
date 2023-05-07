@@ -56,7 +56,7 @@ const AddFood = ({ onSuccess }) => {
         })}
         onSubmit={onSubmit}
       >
-        <div className="container-md my-3">
+        <div className="container">
           <div className="text-center">
             <h2 style={{ paddingTop: "12px" }}>Add Food</h2>
           </div>

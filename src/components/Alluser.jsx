@@ -70,7 +70,7 @@ const Alluser = () => {
     );
   };
   return (
-    <section>
+    <section style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div className="container-md">
         <div className="text-center">
           <h2>All User</h2>

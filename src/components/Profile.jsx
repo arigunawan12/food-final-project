@@ -95,12 +95,12 @@ const Profile = () => {
   };
 
   return (
-    <section>
-      <div className="container-md mb-3">
+    <section style={{ height: "calc(100vh - 120px)", position: "relative" }}>
+      <div className="container mx auto" style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}>
         <div className="text-center">
           <h2>My Profile</h2>
         </div>
-        <div className="card mx-auto card-user shadow" style={{ width: `30%` }}>
+        <div className="card mx-auto card-user shadow" style={{ width: "18rem" }}>
           <img src={data && data.profilePictureUrl ? data && data.profilePictureUrl : defaultImage} className="img-fluid m-0 img-profile-page" alt={data && data.name} onError={onImageError} />
           <div className="card-body">
             <h5 className="card-title text-center">{data && data.name}</h5>

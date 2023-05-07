@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: localStorage.getItem("token") ? <Home /> : <Register />,
+        element: localStorage.getItem("token") ? <Home /> : <Login />,
       },
       {
         path: "/login",
@@ -54,6 +54,10 @@ const router = createBrowserRouter([
         element: <FoodRating />,
       },
     ],
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
